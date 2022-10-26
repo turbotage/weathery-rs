@@ -1,0 +1,13 @@
+[package]
+name = "weathery-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+poem = { features = ["websocket", "static-files"]}
+tokio = { version = "1.17.0", features = ["rt-multi-thread", "macros"] }
+futures-util = "0.3.17"
+tracing-subscriber = { version ="0.3.9", features = ["env-filter"] }
+serde = "1.0.147"
