@@ -9,7 +9,7 @@
 		<button type="submit">Send</button>
 	</form>
 	
-	<textarea id="msgsArea" cols="50" rows="30" hidden></textarea>
+	<textarea id="msgsArea" cols="60" rows="40" hidden></textarea>
 </body>
 <script>
 	let ws;
@@ -31,7 +31,12 @@
 		
 		ws = new WebSocket("ws://" + location.host + "/ws/" + nameInput.value);
 		ws.onmessage = function(event) {
-			msgsArea.value += event.data + "\r\n";
+			console.log(event.data);
+			ed = JSON.parse(event.data);
+			
+			ed.rows.forEach(element => {
+				msgsArea.value += "time: " + element["time"] + ", temp: " + element["temp"] + "\r\n";
+			});
 		}
 		
 	});
